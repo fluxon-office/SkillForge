@@ -9,6 +9,7 @@ const navItems = [
   { icon: 'leaderboard', label: 'Ranking', alert: true },
   { icon: 'card_membership', label: 'Certificates', desktopOnly: true },
   { icon: 'person', label: 'Profile' },
+  { icon: 'settings', label: 'Settings', desktopOnly: true },
 ];
 
 function MaterialIcon({ children, filled = false, className = '', size }) {
@@ -72,9 +73,11 @@ export function StudentDashboardPage() {
           ))}
         </nav>
 
-        <div className="student-system-status">
-          <span />
-          <strong>System Online</strong>
+        <div className="student-sidebar-footer">
+          <button type="button" className="student-logout-button">
+            <MaterialIcon>logout</MaterialIcon>
+            Sair
+          </button>
         </div>
       </aside>
 

@@ -114,26 +114,26 @@
   background: var(--student-surface-container);
   border-right: 1px solid rgba(60, 74, 66, 0.3);
   display: flex;
-  flex: 0 0 256px;
+  flex: 0 0 232px;
   flex-direction: column;
   height: 100vh;
-  padding: 24px 0;
+  padding: 20px 0;
   position: relative;
   transition: all 300ms ease;
-  width: 256px;
+  width: 232px;
   z-index: 40;
 }
 
 .student-sidebar-header {
-  margin-bottom: 32px;
-  padding: 0 24px;
+  margin-bottom: 22px;
+  padding: 0 18px;
 }
 
 .student-brand {
   align-items: center;
   display: flex;
   gap: 8px;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
 .student-brand-icon {
@@ -144,10 +144,10 @@
   align-items: center;
   background: var(--student-surface-container-high);
   border: 1px solid rgba(60, 74, 66, 0.3);
-  border-radius: 8px;
+  border-radius: 6px;
   display: flex;
-  gap: 16px;
-  padding: 12px;
+  gap: 12px;
+  padding: 10px;
 }
 
 .student-avatar {
@@ -157,10 +157,14 @@
   border-radius: 999px;
   color: var(--student-primary-container);
   display: flex;
-  flex: 0 0 40px;
-  height: 40px;
+  flex: 0 0 36px;
+  height: 36px;
   justify-content: center;
-  width: 40px;
+  width: 36px;
+}
+
+.student-avatar .material-symbols-outlined {
+  font-size: 21px;
 }
 
 .student-course-media img {
@@ -177,7 +181,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 128px;
+  width: 124px;
 }
 
 .student-profile-level,
@@ -196,14 +200,15 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 128px;
+  width: 124px;
 }
 
 .student-side-nav {
   display: grid;
   flex: 1;
-  gap: 4px;
-  padding: 0 16px;
+  align-content: start;
+  gap: 3px;
+  padding: 0 12px;
 }
 
 .student-side-link {
@@ -214,7 +219,8 @@
   font-size: 14px;
   gap: 12px;
   line-height: 20px;
-  padding: 12px 16px;
+  min-height: 42px;
+  padding: 10px 14px;
   transition: background-color 200ms ease;
 }
 
@@ -228,22 +234,39 @@
   font-weight: 500;
 }
 
-.student-system-status {
+.student-sidebar-footer {
   align-items: center;
-  color: var(--student-on-surface-variant);
   display: flex;
-  gap: 8px;
   margin-top: auto;
-  padding: 0 24px;
+  padding: 14px 12px 0;
 }
 
-.student-system-status span {
-  background: var(--student-primary-container);
-  border-radius: 999px;
-  height: 8px;
-  width: 8px;
+.student-logout-button {
+  align-items: center;
+  background: transparent;
+  border: 1px solid rgba(60, 74, 66, 0.26);
+  border-radius: 6px;
+  color: var(--student-on-surface-variant);
+  cursor: pointer;
+  display: flex;
+  font-size: 14px;
+  gap: 10px;
+  justify-content: flex-start;
+  line-height: 20px;
+  min-height: 40px;
+  padding: 9px 12px;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease;
+  width: 100%;
 }
 
+.student-logout-button:hover {
+  background: var(--student-surface-container-high);
+  border-color: rgba(60, 74, 66, 0.45);
+  color: var(--student-on-surface);
+}
 .student-main {
   background: var(--student-background);
   display: flex;
