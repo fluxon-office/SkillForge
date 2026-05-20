@@ -8,7 +8,7 @@ export function AdminCoursesPage() {
       <PageHeader
         eyebrow="Cursos"
         title="Gerenciar cursos"
-        description="Estrutura inicial para criacao, edicao e publicacao de cursos pelos professores."
+        description="Estrutura inicial para criação, edição e publicação de cursos pelos professores."
         action={
           <button type="button" className="button-primary">
             <Plus size={18} />

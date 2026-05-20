@@ -16,7 +16,7 @@ export function StudentLayout() {
           <span>SkillForge</span>
         </div>
 
-        <nav className="sidebar-nav" aria-label="Navegacao do aluno">
+        <nav className="sidebar-nav" aria-label="Navegação do aluno">
           {studentLinks.map((link) => {
             const Icon = link.icon;
 

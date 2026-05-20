@@ -13,7 +13,7 @@ export const courses = [
     id: 2,
     title: 'React para Produtos Digitais',
     teacher: 'Prof. Lucas Mendes',
-    level: 'Intermediario',
+    level: 'Intermediário',
     duration: '36h',
     progress: 42,
     students: 96,
@@ -23,7 +23,7 @@ export const courses = [
     id: 3,
     title: 'UX aplicado a Plataformas',
     teacher: 'Profa. Camila Rocha',
-    level: 'Intermediario',
+    level: 'Intermediário',
     duration: '18h',
     progress: 0,
     students: 54,
@@ -39,5 +39,5 @@ export const ranking = [
 
 export const certificates = [
   { id: 1, course: 'HTML e CSS Profissional', issuedAt: '12/05/2026' },
-  { id: 2, course: 'Logica de Programacao', issuedAt: '04/05/2026' },
+  { id: 2, course: 'Lógica de Programação', issuedAt: '04/05/2026' },
 ];

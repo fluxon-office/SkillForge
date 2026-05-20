@@ -7,9 +7,9 @@ export function AdminDashboardPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Area do professor"
-        title="Gestao academica"
-        description="Controle cursos, alunos, publicacoes e indicadores da instituicao."
+        eyebrow="Área do professor"
+        title="Gestão acadêmica"
+        description="Controle cursos, alunos, publicações e indicadores da instituição."
         action={
           <Link to="/admin/cursos" className="button-primary">
             <Plus size={18} />
@@ -19,9 +19,9 @@ export function AdminDashboardPage() {
       />
 
       <section className="stats-grid">
-        <StatCard label="Alunos matriculados" value="298" helper="+18 nos ultimos 7 dias" />
-        <StatCard label="Cursos publicados" value="12" helper="3 em atualizacao" />
-        <StatCard label="Certificados emitidos" value="684" helper="42 este mes" />
+        <StatCard label="Alunos matriculados" value="298" helper="+18 nos últimos 7 dias" />
+        <StatCard label="Cursos publicados" value="12" helper="3 em atualização" />
+        <StatCard label="Certificados emitidos" value="684" helper="42 este mês" />
       </section>
     </>
   );

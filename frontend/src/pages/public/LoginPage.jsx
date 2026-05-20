@@ -23,7 +23,7 @@ export function LoginPage() {
           <p>Evolua, acompanhe e conquiste seu progresso</p>
         </header>
 
-        <div className="role-toggle" aria-label="Selecao de perfil">
+        <div className="role-toggle" aria-label="Seleção de perfil">
           <button
             type="button"
             className={role === 'student' ? 'role-button role-button-active' : 'role-button'}

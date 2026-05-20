@@ -1,16 +1,16 @@
-import './StudentDashboardPage.css';
 import { Link } from 'react-router-dom';
+import './StudentDashboardPage.css';
 
 const courseCoverUrl =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuDPVKieJ_ybzjiOXmviFswpvSB0IMgRyxrGFsMrR9z6SgzJiBtWjFaV3SOoEW-RgFSlwHhU0ZYigL5K5YwQlPKjJXmeh3tL0QQnRl-6WokK7lDaAeLfkwwE1eEVwzHCl0WvF6G7ZOCku40HGbwKmqynxIksX7fzFaYKO_dc26lVbfJb9-SnsLYRFI9nyHRhDfc1rJ4nrHbKx0UUR16xs_RuoNvnuB_t7KsYnBbJ9ahvHE9vTKWrZxG0AJiVFfvYP_4SPWiMSiUH0ns';
 
 const navItems = [
-  { icon: 'home', label: 'Home', to: '/aluno', active: true },
-  { icon: 'school', label: 'Courses', to: '/aluno/cursos' },
-  { icon: 'leaderboard', label: 'Ranking', to: '#ranking', alert: true },
-  { icon: 'card_membership', label: 'Certificates', to: '/aluno/certificados', desktopOnly: true },
-  { icon: 'person', label: 'Profile', to: '#profile' },
-  { icon: 'settings', label: 'Settings', to: '#settings', desktopOnly: true },
+  { icon: 'home', label: 'Início', to: '/aluno', active: true },
+  { icon: 'school', label: 'Cursos', to: '/aluno/cursos' },
+  { icon: 'leaderboard', label: 'Classificação', to: '#ranking', alert: true },
+  { icon: 'card_membership', label: 'Certificados', to: '/aluno/certificados', desktopOnly: true },
+  { icon: 'person', label: 'Perfil', to: '#profile' },
+  { icon: 'settings', label: 'Configurações', to: '#settings', desktopOnly: true },
 ];
 
 function MaterialIcon({ children, filled = false, className = '', size }) {
@@ -55,13 +55,13 @@ export function StudentDashboardPage() {
               <MaterialIcon filled>person</MaterialIcon>
             </div>
             <div>
-              <div className="student-profile-title">Student Portal</div>
-              <div className="student-profile-level">Level 42 Engineer</div>
+              <div className="student-profile-title">Portal do Aluno</div>
+              <div className="student-profile-level">Engenheiro Nível 42</div>
             </div>
           </div>
         </div>
 
-        <nav className="student-side-nav" aria-label="Navegacao do aluno">
+        <nav className="student-side-nav" aria-label="Navegação do aluno">
           {navItems.map((item) => (
             <Link
               to={item.to}
@@ -120,9 +120,9 @@ export function StudentDashboardPage() {
               <div>
                 <div className="student-card-label">
                   <MaterialIcon>stars</MaterialIcon>
-                  Total Points
+                  Pontos Totais
                 </div>
-                <div className="student-stat-value">1,250</div>
+                <div className="student-stat-value">1.250</div>
               </div>
               <div className="student-card-caption">XP ACUMULADO</div>
             </article>
@@ -130,11 +130,11 @@ export function StudentDashboardPage() {
             <article className="student-stat-card">
               <div className="student-level-row">
                 <div>
-                  <div className="student-muted">Nivel</div>
+                  <div className="student-muted">Nível</div>
                   <div className="student-mid-value">42</div>
                 </div>
                 <div className="student-ranking-box">
-                  <div className="student-muted">Ranking</div>
+                  <div className="student-muted">Classificação</div>
                   <div className="student-mid-value">3º</div>
                 </div>
               </div>
@@ -170,7 +170,7 @@ export function StudentDashboardPage() {
 
             <article className="student-course-card">
               <div className="student-course-media">
-                <img src={courseCoverUrl} alt="Course Cover" />
+                <img src={courseCoverUrl} alt="Capa do curso" />
                 <div className="student-course-gradient" />
                 <div className="student-course-tags">
                   <span>Módulo 4</span>
@@ -211,7 +211,7 @@ export function StudentDashboardPage() {
         </div>
       </main>
 
-      <nav className="student-bottom-nav" aria-label="Navegacao mobile">
+      <nav className="student-bottom-nav" aria-label="Navegação mobile">
         {navItems
           .filter((item) => !item.desktopOnly)
           .map((item) => (

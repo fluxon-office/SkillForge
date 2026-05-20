@@ -7,7 +7,7 @@ export function CertificatesPage() {
       <PageHeader
         eyebrow="Conquistas"
         title="Certificados"
-        description="Historico de certificados emitidos para o aluno."
+        description="Histórico de certificados emitidos para o aluno."
       />
 
       <section className="list-panel">

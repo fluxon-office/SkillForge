@@ -12,10 +12,10 @@ export function AdminLayout() {
       <aside className="sidebar sidebar-admin">
         <div className="brand-mark">
           <GraduationCap size={26} />
-          <span>SkillForge Admin</span>
+          <span>SkillForge Professores</span>
         </div>
 
-        <nav className="sidebar-nav" aria-label="Navegacao do administrador">
+        <nav className="sidebar-nav" aria-label="Navegação do administrador">
           {adminLinks.map((link) => {
             const Icon = link.icon;
 

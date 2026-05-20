@@ -7,9 +7,9 @@ const courseCards = [
     id: 1,
     track: 'SIT',
     status: 'Em andamento',
-    title: 'Advanced Systems Architecture',
+    title: 'Arquitetura Avançada de Sistemas',
     description:
-      'Deep dive into distributed systems, microservices, and high-availability infrastructure design patterns.',
+      'Aprofunde-se em sistemas distribuídos, microserviços e padrões de infraestrutura de alta disponibilidade.',
     icon: 'terminal',
     hours: '40h',
     rating: '4.9',
@@ -22,9 +22,9 @@ const courseCards = [
     id: 2,
     track: 'SAT',
     status: 'Iniciado',
-    title: 'Hardware-Level Optimization',
+    title: 'Otimização em Nível de Hardware',
     description:
-      'Understand the physical layer. Techniques for optimizing software to leverage specific CPU architectures.',
+      'Entenda a camada física e técnicas para otimizar software explorando arquiteturas específicas de CPU.',
     icon: 'memory',
     hours: '24h',
     rating: '4.7',
@@ -38,9 +38,9 @@ const courseCards = [
     id: 3,
     track: 'SRT',
     status: 'Concluído',
-    title: 'Applied Cryptography',
+    title: 'Criptografia Aplicada',
     description:
-      'Implementation of modern encryption standards, key exchange protocols, and secure communication channels.',
+      'Implementação de padrões modernos de criptografia, protocolos de troca de chaves e canais seguros.',
     icon: 'verified',
     hours: '32h',
     rating: '5.0',
@@ -52,15 +52,15 @@ const courseCards = [
 ];
 
 const navItems = [
-  { icon: 'home', label: 'Home', to: '/aluno' },
-  { icon: 'school', label: 'Courses', to: '/aluno/cursos', active: true },
-  { icon: 'leaderboard', label: 'Ranking', to: '#ranking', alert: true },
-  { icon: 'card_membership', label: 'Certificates', to: '/aluno/certificados', desktopOnly: true },
-  { icon: 'person', label: 'Profile', to: '#profile' },
-  { icon: 'settings', label: 'Settings', to: '#settings', desktopOnly: true },
+  { icon: 'home', label: 'Início', to: '/aluno' },
+  { icon: 'school', label: 'Cursos', to: '/aluno/cursos', active: true },
+  { icon: 'leaderboard', label: 'Classificação', to: '#ranking', alert: true },
+  { icon: 'card_membership', label: 'Certificados', to: '/aluno/certificados', desktopOnly: true },
+  { icon: 'person', label: 'Perfil', to: '#profile' },
+  { icon: 'settings', label: 'Configurações', to: '#settings', desktopOnly: true },
 ];
 
-const filters = ['All', 'SIT', 'SAT', 'SRT', 'SPT', 'Geral'];
+const filters = ['Todos', 'SIT', 'SAT', 'SRT', 'SPT', 'Geral'];
 
 function MaterialIcon({ children, filled = false, className = '', size }) {
   const style = {
@@ -104,8 +104,8 @@ function StudentCourseNavigation() {
               <MaterialIcon filled>person</MaterialIcon>
             </div>
             <div>
-              <div className="student-profile-title">Student Portal</div>
-              <div className="student-profile-level">Level 42 Engineer</div>
+              <div className="student-profile-title">Portal do Aluno</div>
+              <div className="student-profile-level">Engenheiro Nível 42</div>
             </div>
           </div>
         </div>
@@ -185,7 +185,7 @@ function CourseCard({ course }) {
 
         <div className="catalog-card-progress">
           <div>
-            <span>Progress</span>
+            <span>Progresso</span>
             <strong className={course.completed ? 'is-complete' : ''}>{course.progress}%</strong>
           </div>
           <div className="catalog-progress-track">
@@ -197,7 +197,7 @@ function CourseCard({ course }) {
           {course.completed ? (
             <button type="button" className="catalog-certificate-button">
               <MaterialIcon size={18}>download</MaterialIcon>
-              Certificate
+              Certificado
             </button>
           ) : (
             <>
@@ -224,14 +224,14 @@ export function CourseCatalogPage() {
         <div className="course-canvas">
           <section className="course-header">
             <div>
-              <h1>Available Curriculum</h1>
-              <p>Explore technical modules designed to elevate your engineering capabilities. Master the stack.</p>
+              <h1>Currículo Disponível</h1>
+              <p>Explore módulos técnicos criados para elevar suas habilidades de engenharia. Domine a pilha tecnológica.</p>
             </div>
 
             <div className="course-toolbar">
               <label className="course-search" aria-label="Buscar módulos">
                 <MaterialIcon>search</MaterialIcon>
-                <input type="text" placeholder="Search modules..." />
+                <input type="text" placeholder="Buscar módulos..." />
               </label>
 
               <div className="course-filters" aria-label="Filtros de trilha">
