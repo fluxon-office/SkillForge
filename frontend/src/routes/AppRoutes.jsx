@@ -13,10 +13,14 @@ export function AppRoutes() {
     <Routes>
       <Route path="/" element={<LoginPage />} />
 
-      <Route path="/aluno" element={<StudentLayout />}>
-        <Route index element={<StudentDashboardPage />} />
-        <Route path="cursos" element={<CourseCatalogPage />} />
-        <Route path="certificados" element={<CertificatesPage />} />
+      <Route path="/aluno" element={<StudentDashboardPage />} />
+
+      <Route path="/aluno/cursos" element={<StudentLayout />}>
+        <Route index element={<CourseCatalogPage />} />
+      </Route>
+
+      <Route path="/aluno/certificados" element={<StudentLayout />}>
+        <Route index element={<CertificatesPage />} />
       </Route>
 
       <Route path="/admin" element={<AdminLayout />}>
