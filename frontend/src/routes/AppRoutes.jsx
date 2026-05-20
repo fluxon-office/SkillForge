@@ -15,9 +15,7 @@ export function AppRoutes() {
 
       <Route path="/aluno" element={<StudentDashboardPage />} />
 
-      <Route path="/aluno/cursos" element={<StudentLayout />}>
-        <Route index element={<CourseCatalogPage />} />
-      </Route>
+      <Route path="/aluno/cursos" element={<CourseCatalogPage />} />
 
       <Route path="/aluno/certificados" element={<StudentLayout />}>
         <Route index element={<CertificatesPage />} />

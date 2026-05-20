@@ -1,15 +1,16 @@
 import './StudentDashboardPage.css';
+import { Link } from 'react-router-dom';
 
 const courseCoverUrl =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuDPVKieJ_ybzjiOXmviFswpvSB0IMgRyxrGFsMrR9z6SgzJiBtWjFaV3SOoEW-RgFSlwHhU0ZYigL5K5YwQlPKjJXmeh3tL0QQnRl-6WokK7lDaAeLfkwwE1eEVwzHCl0WvF6G7ZOCku40HGbwKmqynxIksX7fzFaYKO_dc26lVbfJb9-SnsLYRFI9nyHRhDfc1rJ4nrHbKx0UUR16xs_RuoNvnuB_t7KsYnBbJ9ahvHE9vTKWrZxG0AJiVFfvYP_4SPWiMSiUH0ns';
 
 const navItems = [
-  { icon: 'home', label: 'Home', active: true },
-  { icon: 'school', label: 'Courses' },
-  { icon: 'leaderboard', label: 'Ranking', alert: true },
-  { icon: 'card_membership', label: 'Certificates', desktopOnly: true },
-  { icon: 'person', label: 'Profile' },
-  { icon: 'settings', label: 'Settings', desktopOnly: true },
+  { icon: 'home', label: 'Home', to: '/aluno', active: true },
+  { icon: 'school', label: 'Courses', to: '/aluno/cursos' },
+  { icon: 'leaderboard', label: 'Ranking', to: '#ranking', alert: true },
+  { icon: 'card_membership', label: 'Certificates', to: '/aluno/certificados', desktopOnly: true },
+  { icon: 'person', label: 'Profile', to: '#profile' },
+  { icon: 'settings', label: 'Settings', to: '#settings', desktopOnly: true },
 ];
 
 function MaterialIcon({ children, filled = false, className = '', size }) {
@@ -62,14 +63,14 @@ export function StudentDashboardPage() {
 
         <nav className="student-side-nav" aria-label="Navegacao do aluno">
           {navItems.map((item) => (
-            <a
-              href="#home"
+            <Link
+              to={item.to}
               key={item.label}
               className={item.active ? 'student-side-link student-side-link-active' : 'student-side-link'}
             >
               <MaterialIcon filled={item.active}>{item.icon}</MaterialIcon>
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -214,8 +215,8 @@ export function StudentDashboardPage() {
         {navItems
           .filter((item) => !item.desktopOnly)
           .map((item) => (
-            <button
-              type="button"
+            <Link
+              to={item.to}
               key={item.label}
               className={item.active ? 'student-bottom-link student-bottom-link-active' : 'student-bottom-link'}
             >
@@ -224,7 +225,7 @@ export function StudentDashboardPage() {
                 <MaterialIcon filled={item.active}>{item.icon}</MaterialIcon>
               </span>
               <small>{item.label}</small>
-            </button>
+            </Link>
           ))}
       </nav>
     </div>
