@@ -1,5 +1,16 @@
-import { PageHeader } from '../../components/common/PageHeader.jsx';
 import { certificates } from '../../data/mockCourses.js';
+
+function PageHeader({ eyebrow, title, description }) {
+  return (
+    <header className="page-header">
+      <div>
+        {eyebrow ? <span className="eyebrow">{eyebrow}</span> : null}
+        <h1>{title}</h1>
+        {description ? <p>{description}</p> : null}
+      </div>
+    </header>
+  );
+}
 
 export function CertificatesPage() {
   return (

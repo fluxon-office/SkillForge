@@ -1,7 +1,29 @@
 import { Plus } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { PageHeader } from '../../components/common/PageHeader.jsx';
-import { StatCard } from '../../components/dashboard/StatCard.jsx';
+
+function PageHeader({ eyebrow, title, description, action }) {
+  return (
+    <header className="page-header">
+      <div>
+        {eyebrow ? <span className="eyebrow">{eyebrow}</span> : null}
+        <h1>{title}</h1>
+        {description ? <p>{description}</p> : null}
+      </div>
+
+      {action ? <div className="header-action">{action}</div> : null}
+    </header>
+  );
+}
+
+function StatCard({ label, value, helper }) {
+  return (
+    <article className="stat-card">
+      <span>{label}</span>
+      <strong>{value}</strong>
+      {helper ? <small>{helper}</small> : null}
+    </article>
+  );
+}
 
 export function AdminDashboardPage() {
   return (
