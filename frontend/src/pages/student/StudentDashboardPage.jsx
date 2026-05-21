@@ -197,13 +197,13 @@ export function StudentDashboardPage() {
                 </div>
 
                 <div className="student-course-actions">
-                  <button type="button" className="student-resume-button">
+                  <Link to="/aluno/cursos/1/aula" className="student-resume-button">
                     <MaterialIcon filled>play_arrow</MaterialIcon>
                     Retomar Aula
-                  </button>
-                  <button type="button" className="student-details-button">
+                  </Link>
+                  <Link to="/aluno/cursos/1" className="student-details-button">
                     Detalhes do Módulo
-                  </button>
+                  </Link>
                 </div>
               </div>
             </article>

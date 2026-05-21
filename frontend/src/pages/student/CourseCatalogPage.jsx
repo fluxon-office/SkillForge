@@ -106,9 +106,9 @@ function CourseCard({ course }) {
               <Link to={`/aluno/cursos/${course.id}`} className="catalog-secondary-button">
                 Saber mais
               </Link>
-              <button type="button" className="catalog-primary-button">
+              <Link to={`/aluno/cursos/${course.id}/aula`} className="catalog-primary-button">
                 {course.action}
-              </button>
+              </Link>
             </>
           )}
         </div>
