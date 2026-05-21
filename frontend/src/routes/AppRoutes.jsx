@@ -1,6 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { AdminLayout } from '../layouts/AdminLayout.jsx';
-import { StudentLayout } from '../layouts/StudentLayout.jsx';
 import { AdminCoursesPage } from '../pages/admin/AdminCoursesPage.jsx';
 import { AdminDashboardPage } from '../pages/admin/AdminDashboardPage.jsx';
 import { LoginPage } from '../pages/public/LoginPage.jsx';
@@ -23,9 +22,7 @@ export function AppRoutes() {
       <Route path="/aluno/cursos/:courseId/aula" element={<CoursePlayerPage />} />
       <Route path="/aluno/classificacao" element={<RankingPage />} />
 
-      <Route path="/aluno/certificados" element={<StudentLayout />}>
-        <Route index element={<CertificatesPage />} />
-      </Route>
+      <Route path="/aluno/certificados" element={<CertificatesPage />} />
 
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<AdminDashboardPage />} />

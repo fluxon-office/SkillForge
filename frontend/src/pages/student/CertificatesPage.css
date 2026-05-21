@@ -1,0 +1,353 @@
+.certificates-page {
+  min-height: 100vh;
+}
+
+.certificates-main {
+  background: var(--student-background);
+}
+
+.certificates-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 24px;
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 48px 24px;
+  width: 100%;
+}
+
+.certificates-header {
+  align-items: flex-end;
+  border-bottom: 1px solid var(--student-surface-container-highest);
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  padding-bottom: 16px;
+}
+
+.certificates-header h1 {
+  color: var(--student-on-surface);
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 56px;
+  margin: 0 0 4px;
+}
+
+.certificates-header p {
+  color: var(--student-on-surface-variant);
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0;
+  max-width: 760px;
+}
+
+.certificate-upload-button {
+  align-items: center;
+  background: var(--student-primary-container);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: var(--student-on-primary-container);
+  cursor: pointer;
+  display: flex;
+  flex: 0 0 auto;
+  font-family: "JetBrains Mono", Geist, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  gap: 8px;
+  letter-spacing: 0.05em;
+  line-height: 16px;
+  padding: 8px 16px;
+  text-transform: uppercase;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+
+.certificate-upload-button:hover {
+  background: var(--student-primary);
+  border-color: var(--student-primary);
+}
+
+.certificate-metrics-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.certificate-metric-card {
+  background: var(--student-surface-container-low);
+  border: 1px solid var(--student-surface-container-highest);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 156px;
+  overflow: hidden;
+  padding: 16px;
+  transition: border-color 160ms ease;
+}
+
+.certificate-metric-card:hover {
+  border-color: var(--student-outline-variant);
+}
+
+.certificate-metric-label {
+  align-items: center;
+  color: var(--student-on-surface-variant);
+  display: flex;
+  font-family: "JetBrains Mono", Geist, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  gap: 8px;
+  letter-spacing: 0.05em;
+  line-height: 16px;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.certificate-metric-value {
+  align-items: baseline;
+  display: flex;
+  gap: 4px;
+}
+
+.certificate-metric-value strong {
+  color: var(--student-on-surface);
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 56px;
+}
+
+.certificate-metric-value span {
+  color: var(--student-on-surface-variant);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.certificate-progress-track {
+  background: var(--student-surface-container-highest);
+  border-radius: 999px;
+  height: 4px;
+  margin-top: auto;
+  overflow: hidden;
+  width: 100%;
+}
+
+.certificate-progress-track span {
+  background: var(--student-primary-container);
+  border-radius: 999px;
+  display: block;
+  height: 100%;
+}
+
+.certificate-table {
+  background: var(--student-surface-container-low);
+  border: 1px solid var(--student-surface-container-highest);
+  border-radius: 8px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.certificate-table-header {
+  align-items: center;
+  background: var(--student-surface-container);
+  border-bottom: 1px solid var(--student-surface-container-highest);
+  display: flex;
+  justify-content: space-between;
+  min-height: 52px;
+  padding: 8px 16px;
+}
+
+.certificate-table-header h2 {
+  color: var(--student-on-surface);
+  font-family: "JetBrains Mono", Geist, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  line-height: 16px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.certificate-table-header div,
+.certificate-actions {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.certificate-table-header button,
+.certificate-actions button {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 4px;
+  color: var(--student-on-surface-variant);
+  cursor: pointer;
+  display: flex;
+  padding: 4px;
+  transition: color 160ms ease;
+}
+
+.certificate-table-header button:hover,
+.certificate-actions button:hover {
+  color: var(--student-primary-container);
+}
+
+.certificate-actions button.is-danger:hover {
+  color: var(--student-error, #ffb4ab);
+}
+
+.certificate-table-columns,
+.certificate-row {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: minmax(0, 5fr) minmax(100px, 2fr) minmax(120px, 2fr) minmax(118px, 2fr) 72px;
+}
+
+.certificate-table-columns {
+  background: var(--student-surface-container-lowest, #0e0e0e);
+  border-bottom: 1px solid var(--student-surface-container-highest);
+  color: var(--student-on-surface-variant);
+  font-family: "JetBrains Mono", Geist, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  line-height: 16px;
+  padding: 8px 16px;
+  text-transform: uppercase;
+}
+
+.certificate-table-columns span:last-child {
+  text-align: right;
+}
+
+.certificate-table-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.certificate-row {
+  align-items: center;
+  border-bottom: 1px solid var(--student-surface-container-highest);
+  min-height: 84px;
+  padding: 16px;
+  transition: background-color 160ms ease;
+}
+
+.certificate-row:last-child {
+  border-bottom: 0;
+}
+
+.certificate-row:hover {
+  background: var(--student-surface-container);
+}
+
+.certificate-course-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.certificate-course-cell strong {
+  color: var(--student-on-surface);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.certificate-course-cell span {
+  align-items: center;
+  color: var(--student-on-surface-variant);
+  display: flex;
+  font-size: 14px;
+  gap: 4px;
+  line-height: 20px;
+}
+
+.certificate-code-cell {
+  color: var(--student-on-surface-variant);
+  font-family: "JetBrains Mono", Geist, monospace;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.certificate-status {
+  align-items: center;
+  border-radius: 4px;
+  display: inline-flex;
+  font-family: "JetBrains Mono", Geist, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  gap: 4px;
+  letter-spacing: 0.05em;
+  line-height: 16px;
+  padding: 4px 8px;
+  text-transform: uppercase;
+}
+
+.certificate-status.is-approved {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--student-primary-container);
+}
+
+.certificate-status.is-pending {
+  background: var(--student-surface-container-high);
+  border: 1px solid var(--student-outline-variant);
+  color: var(--student-on-surface-variant);
+}
+
+.certificate-status.is-rejected {
+  background: rgba(147, 0, 10, 0.2);
+  border: 1px solid rgba(255, 180, 171, 0.3);
+  color: #ffb4ab;
+}
+
+.certificate-actions {
+  justify-content: flex-end;
+}
+
+@media (max-width: 900px) {
+  .certificates-content {
+    padding: 32px 18px 112px;
+  }
+
+  .certificates-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .certificates-header h1 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .certificate-upload-button {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .certificate-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .certificate-table-columns {
+    display: none;
+  }
+
+  .certificate-row {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+
+  .certificate-actions {
+    justify-content: flex-start;
+  }
+}
