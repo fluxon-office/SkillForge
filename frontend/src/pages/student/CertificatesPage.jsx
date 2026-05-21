@@ -170,10 +170,6 @@ function CertificateModal({ certificate, onClose }) {
             <span>Visualização do Certificado</span>
             <h2 id="certificate-modal-title">{certificate.course}</h2>
           </div>
-
-          <button type="button" aria-label="Fechar visualização" onClick={onClose}>
-            <MaterialIcon>close</MaterialIcon>
-          </button>
         </header>
 
         <CertificatePreview certificate={certificate} />
@@ -182,7 +178,13 @@ function CertificateModal({ certificate, onClose }) {
           <button type="button" className="certificate-secondary-action" onClick={onClose}>
             Fechar
           </button>
-          <button type="button" className="certificate-primary-action" onClick={() => downloadCertificate(certificate)}>
+          <button
+            type="button"
+            className="certificate-primary-action"
+            disabled={certificate.status !== 'approved'}
+            onClick={() => downloadCertificate(certificate)}
+            title={certificate.status !== 'approved' ? 'Disponível somente após aprovação' : undefined}
+          >
             <MaterialIcon size={18}>download</MaterialIcon>
             Baixar Certificado
           </button>
@@ -205,10 +207,6 @@ function RejectionModal({ certificate, onClose }) {
             <span>Motivo da Recusa</span>
             <h2 id="rejection-modal-title">{certificate.course}</h2>
           </div>
-
-          <button type="button" aria-label="Fechar motivo da recusa" onClick={onClose}>
-            <MaterialIcon>close</MaterialIcon>
-          </button>
         </header>
 
         <div className="certificate-rejection-box">

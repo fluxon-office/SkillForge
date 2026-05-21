@@ -518,6 +518,14 @@
   color: var(--student-on-primary-container);
 }
 
+.certificate-primary-action:disabled {
+  background: var(--student-surface-container-high);
+  border-color: var(--student-outline-variant);
+  color: var(--student-on-surface-variant);
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
 .certificate-secondary-action {
   background: transparent;
   border: 1px solid var(--student-outline-variant);
