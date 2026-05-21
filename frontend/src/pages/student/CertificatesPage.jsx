@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './StudentDashboardPage.css';
 import './CertificatesPage.css';
 import { MaterialIcon, StudentCourseNavigation } from './StudentCourseNavigation.jsx';
@@ -29,6 +30,8 @@ const certificates = [
     institution: 'AWS Training Center',
     workload: '40h',
     sentAt: '12 Out 2023',
+    issuedTo: 'Alex Martins',
+    verificationCode: 'AWS-SF-2023-142-01',
     status: 'approved',
     statusLabel: 'Aprovado',
     statusIcon: 'check_circle',
@@ -39,6 +42,8 @@ const certificates = [
     institution: 'Alura Cursos',
     workload: '24h',
     sentAt: '28 Nov 2023',
+    issuedTo: 'Alex Martins',
+    verificationCode: 'ALU-SF-2023-024-02',
     status: 'pending',
     statusLabel: 'Pendente',
     statusIcon: 'hourglass_empty',
@@ -52,9 +57,44 @@ const certificates = [
     status: 'rejected',
     statusLabel: 'Recusado',
     statusIcon: 'cancel',
-    hasReason: true,
+    rejectionReason:
+      'Certificado recusado para contabilização de horas. Converse com o professor responsável pelo curso para entender o motivo da recusa e reenviar a documentação correta.',
   },
 ];
+
+function createCertificateText(certificate) {
+  return [
+    'SKILLFORGE - CERTIFICADO',
+    '',
+    `Aluno: ${certificate.issuedTo ?? 'Alex Martins'}`,
+    `Curso: ${certificate.course}`,
+    `Instituição: ${certificate.institution}`,
+    `Carga horária: ${certificate.workload}`,
+    `Data de envio: ${certificate.sentAt}`,
+    `Status: ${certificate.statusLabel}`,
+    `Código de verificação: ${certificate.verificationCode ?? `SFG-${certificate.id}`}`,
+    '',
+    'Documento mockado para visualização no protótipo SkillForge.',
+  ].join('\n');
+}
+
+function downloadTextFile(filename, content) {
+  const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+function downloadCertificate(certificate) {
+  const fileName = `${certificate.course.toLowerCase().replace(/[^a-z0-9]+/gi, '-')}-certificado.txt`;
+  downloadTextFile(fileName, createCertificateText(certificate));
+}
 
 function CertificateMetricCard({ metric }) {
   return (
@@ -81,13 +121,114 @@ function CertificateMetricCard({ metric }) {
 function StatusBadge({ certificate }) {
   return (
     <span className={`certificate-status is-${certificate.status}`}>
-      <MaterialIcon size={14}>{certificate.statusIcon}</MaterialIcon>
+      <MaterialIcon filled size={14}>
+        {certificate.statusIcon}
+      </MaterialIcon>
       {certificate.statusLabel}
     </span>
   );
 }
 
-function CertificateRow({ certificate }) {
+function CertificatePreview({ certificate }) {
+  return (
+    <div className="certificate-preview">
+      <div className="certificate-preview-top">
+        <span>SkillForge</span>
+        <small>{certificate.verificationCode ?? 'Documento em análise'}</small>
+      </div>
+
+      <div className="certificate-preview-body">
+        <MaterialIcon filled className="certificate-preview-medal">
+          workspace_premium
+        </MaterialIcon>
+        <span>Certificado de Conclusão</span>
+        <h3>{certificate.course}</h3>
+        <p>
+          Certificamos que <strong>{certificate.issuedTo ?? 'Alex Martins'}</strong> concluiu a atividade promovida por{' '}
+          <strong>{certificate.institution}</strong>, com carga horária de <strong>{certificate.workload}</strong>.
+        </p>
+      </div>
+
+      <div className="certificate-preview-footer">
+        <span>Enviado em {certificate.sentAt}</span>
+        <StatusBadge certificate={certificate} />
+      </div>
+    </div>
+  );
+}
+
+function CertificateModal({ certificate, onClose }) {
+  if (!certificate) {
+    return null;
+  }
+
+  return (
+    <div className="certificate-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="certificate-modal-title">
+      <div className="certificate-modal">
+        <header className="certificate-modal-header">
+          <div>
+            <span>Visualização do Certificado</span>
+            <h2 id="certificate-modal-title">{certificate.course}</h2>
+          </div>
+
+          <button type="button" aria-label="Fechar visualização" onClick={onClose}>
+            <MaterialIcon>close</MaterialIcon>
+          </button>
+        </header>
+
+        <CertificatePreview certificate={certificate} />
+
+        <footer className="certificate-modal-actions">
+          <button type="button" className="certificate-secondary-action" onClick={onClose}>
+            Fechar
+          </button>
+          <button type="button" className="certificate-primary-action" onClick={() => downloadCertificate(certificate)}>
+            <MaterialIcon size={18}>download</MaterialIcon>
+            Baixar Certificado
+          </button>
+        </footer>
+      </div>
+    </div>
+  );
+}
+
+function RejectionModal({ certificate, onClose }) {
+  if (!certificate) {
+    return null;
+  }
+
+  return (
+    <div className="certificate-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="rejection-modal-title">
+      <div className="certificate-modal certificate-rejection-modal">
+        <header className="certificate-modal-header">
+          <div>
+            <span>Motivo da Recusa</span>
+            <h2 id="rejection-modal-title">{certificate.course}</h2>
+          </div>
+
+          <button type="button" aria-label="Fechar motivo da recusa" onClick={onClose}>
+            <MaterialIcon>close</MaterialIcon>
+          </button>
+        </header>
+
+        <div className="certificate-rejection-box">
+          <MaterialIcon size={28}>info</MaterialIcon>
+          <p>{certificate.rejectionReason}</p>
+        </div>
+
+        <footer className="certificate-modal-actions">
+          <button type="button" className="certificate-primary-action" onClick={onClose}>
+            Entendi
+          </button>
+        </footer>
+      </div>
+    </div>
+  );
+}
+
+function CertificateRow({ certificate, onView, onReason }) {
+  const canView = certificate.status !== 'rejected';
+
   return (
     <article className="certificate-row">
       <div className="certificate-course-cell">
@@ -106,12 +247,14 @@ function CertificateRow({ certificate }) {
       </div>
 
       <div className="certificate-actions">
-        <button type="button" aria-label={`Visualizar certificado de ${certificate.course}`}>
-          <MaterialIcon size={20}>visibility</MaterialIcon>
-        </button>
+        {canView ? (
+          <button type="button" aria-label={`Visualizar certificado de ${certificate.course}`} onClick={() => onView(certificate)}>
+            <MaterialIcon size={20}>visibility</MaterialIcon>
+          </button>
+        ) : null}
 
-        {certificate.hasReason ? (
-          <button type="button" className="is-danger" aria-label={`Ver motivo da recusa de ${certificate.course}`}>
+        {certificate.rejectionReason ? (
+          <button type="button" className="is-danger" aria-label={`Ver motivo da recusa de ${certificate.course}`} onClick={() => onReason(certificate)}>
             <MaterialIcon size={20}>info</MaterialIcon>
           </button>
         ) : null}
@@ -121,6 +264,15 @@ function CertificateRow({ certificate }) {
 }
 
 export function CertificatesPage() {
+  const [activeCertificate, setActiveCertificate] = useState(null);
+  const [rejectedCertificate, setRejectedCertificate] = useState(null);
+
+  function handleDownloadAll() {
+    certificates.filter((certificate) => certificate.status !== 'rejected').forEach((certificate, index) => {
+      window.setTimeout(() => downloadCertificate(certificate), index * 120);
+    });
+  }
+
   return (
     <div className="student-dashboard certificates-page">
       <StudentCourseNavigation />
@@ -136,10 +288,12 @@ export function CertificatesPage() {
               </p>
             </div>
 
-            <button type="button" className="certificate-upload-button">
-              <MaterialIcon size={18}>upload</MaterialIcon>
-              Enviar Certificado
-            </button>
+            <div className="certificate-header-actions">
+              <button type="button" className="certificate-upload-button" onClick={handleDownloadAll}>
+                <MaterialIcon size={18}>download</MaterialIcon>
+                Baixar Todos
+              </button>
+            </div>
           </header>
 
           <section className="certificate-metrics-grid" aria-label="Resumo de certificados">
@@ -155,7 +309,7 @@ export function CertificatesPage() {
                 <button type="button" aria-label="Filtrar certificados">
                   <MaterialIcon size={20}>filter_list</MaterialIcon>
                 </button>
-                <button type="button" aria-label="Baixar relatório">
+                <button type="button" aria-label="Baixar todos os certificados" onClick={handleDownloadAll}>
                   <MaterialIcon size={20}>download</MaterialIcon>
                 </button>
               </div>
@@ -171,12 +325,20 @@ export function CertificatesPage() {
 
             <div className="certificate-table-body">
               {certificates.map((certificate) => (
-                <CertificateRow key={certificate.id} certificate={certificate} />
+                <CertificateRow
+                  key={certificate.id}
+                  certificate={certificate}
+                  onView={setActiveCertificate}
+                  onReason={setRejectedCertificate}
+                />
               ))}
             </div>
           </section>
         </div>
       </main>
+
+      <CertificateModal certificate={activeCertificate} onClose={() => setActiveCertificate(null)} />
+      <RejectionModal certificate={rejectedCertificate} onClose={() => setRejectedCertificate(null)} />
     </div>
   );
 }
