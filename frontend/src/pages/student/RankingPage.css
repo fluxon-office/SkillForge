@@ -179,11 +179,11 @@
 }
 
 .ranking-podium-card .ranking-avatar .material-symbols-outlined {
-  font-size: 78%;
+  font-size: 112%;
 }
 
 .ranking-podium-card.is-gold .ranking-avatar .material-symbols-outlined {
-  font-size: 82%;
+  font-size: 116%;
 }
 
 .ranking-avatar-small {
