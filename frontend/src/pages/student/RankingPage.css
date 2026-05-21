@@ -25,6 +25,13 @@
   min-height: 120px;
 }
 
+.ranking-header > div:first-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 112px;
+}
+
 .ranking-header h1 {
   color: var(--student-on-surface);
   font-size: 48px;
@@ -264,7 +271,7 @@
   font-size: 12px;
   font-weight: 600;
   gap: 16px;
-  grid-template-columns: 64px minmax(0, 1fr) 112px;
+  grid-template-columns: 78px minmax(0, 1fr) 128px;
   letter-spacing: 0.05em;
   line-height: 16px;
   margin-bottom: 8px;
@@ -287,8 +294,8 @@
   border-radius: 8px;
   display: grid;
   gap: 16px;
-  grid-template-columns: 64px minmax(0, 1fr) 112px;
-  min-height: 66px;
+  grid-template-columns: 78px minmax(0, 1fr) 128px;
+  min-height: 74px;
   padding: 12px;
   transition: background-color 160ms ease;
 }
@@ -304,6 +311,7 @@
 .ranking-current-row {
   background: var(--student-surface-container-high);
   border-color: rgba(78, 222, 163, 0.5);
+  min-height: 78px;
   overflow: hidden;
   position: relative;
 }
@@ -419,6 +427,10 @@
     min-height: 188px;
   }
 
+  .ranking-header > div:first-child {
+    min-height: 112px;
+  }
+
   .ranking-header h1 {
     font-size: 32px;
     line-height: 40px;
@@ -480,7 +492,7 @@
   .ranking-board-head,
   .ranking-row {
     gap: 10px;
-    grid-template-columns: 40px minmax(0, 1fr) 84px;
+    grid-template-columns: 46px minmax(0, 1fr) 92px;
     padding-left: 10px;
     padding-right: 10px;
   }

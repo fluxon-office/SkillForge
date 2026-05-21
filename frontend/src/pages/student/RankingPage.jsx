@@ -5,7 +5,7 @@ import { MaterialIcon, StudentCourseNavigation } from './StudentCourseNavigation
 
 const rankingViews = {
   turma: {
-    title: 'Ranking da Turma',
+    titlePrefix: 'Ranking da',
     highlight: 'Turma',
     description: 'Compare seu desempenho com os alunos da sua turma e acompanhe quem mais evoluiu nesta semana.',
     podium: [
@@ -29,7 +29,7 @@ const rankingViews = {
     nextStudent: { rank: 13, name: 'João S.', xp: 8100, detail: 'Turma 3SIT' },
   },
   curso: {
-    title: 'Ranking do Curso',
+    titlePrefix: 'Ranking do',
     highlight: 'Curso',
     description: 'Veja os alunos com maior pontuação dentro do curso de Arquitetura de Sistemas.',
     podium: [
@@ -53,7 +53,7 @@ const rankingViews = {
     nextStudent: { rank: 59, name: 'Mateus F.', xp: 10940, detail: 'Arquitetura de Sistemas' },
   },
   geral: {
-    title: 'Ranking Geral',
+    titlePrefix: 'Ranking',
     highlight: 'Geral',
     description: 'Acompanhe sua posição entre todos os alunos ativos da plataforma SkillForge.',
     podium: [
@@ -105,7 +105,7 @@ function RankingHeader({ activeFilter, onFilterChange, view }) {
     <header className="ranking-header">
       <div>
         <h1>
-          {view.title.split(' ').slice(0, -1).join(' ')} <span>{view.highlight}</span>
+          {view.titlePrefix} <span>{view.highlight}</span>
         </h1>
         <p>{view.description}</p>
       </div>
