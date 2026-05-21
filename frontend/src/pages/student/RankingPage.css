@@ -178,6 +178,14 @@
   font-size: 68%;
 }
 
+.ranking-podium-card .ranking-avatar .material-symbols-outlined {
+  font-size: 78%;
+}
+
+.ranking-podium-card.is-gold .ranking-avatar .material-symbols-outlined {
+  font-size: 82%;
+}
+
 .ranking-avatar-small {
   height: 40px;
   width: 40px;
