@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const navItems = [
-  { icon: 'home', label: 'Início', to: '/aluno' },
-  { icon: 'school', label: 'Cursos', to: '/aluno/cursos', active: true },
-  { icon: 'leaderboard', label: 'Classificação', to: '#ranking', alert: true },
+  { icon: 'home', label: 'Início', to: '/aluno', end: true },
+  { icon: 'school', label: 'Cursos', to: '/aluno/cursos' },
+  { icon: 'leaderboard', label: 'Classificação', to: '/aluno/classificacao', alert: true },
   { icon: 'card_membership', label: 'Certificados', to: '/aluno/certificados', desktopOnly: true },
   { icon: 'person', label: 'Perfil', to: '#profile' },
   { icon: 'settings', label: 'Configurações', to: '#settings', desktopOnly: true },
@@ -19,6 +19,58 @@ export function MaterialIcon({ children, filled = false, className = '', size })
     <span className={`material-symbols-outlined ${className}`} style={style} aria-hidden="true">
       {children}
     </span>
+  );
+}
+
+function StudentNavigationItem({ item, variant }) {
+  const isPlaceholder = item.to.startsWith('#');
+  const baseClass = variant === 'bottom' ? 'student-bottom-link' : 'student-side-link';
+  const activeClass = variant === 'bottom' ? 'student-bottom-link-active' : 'student-side-link-active';
+
+  if (isPlaceholder) {
+    return (
+      <Link key={item.label} to={item.to} className={baseClass}>
+        {variant === 'bottom' ? (
+          <>
+            <span className="student-bottom-icon-wrap">
+              <MaterialIcon>{item.icon}</MaterialIcon>
+            </span>
+            <small>{item.label}</small>
+          </>
+        ) : (
+          <>
+            <MaterialIcon>{item.icon}</MaterialIcon>
+            {item.label}
+          </>
+        )}
+      </Link>
+    );
+  }
+
+  return (
+    <NavLink
+      key={item.label}
+      to={item.to}
+      end={item.end}
+      className={({ isActive }) => (isActive ? `${baseClass} ${activeClass}` : baseClass)}
+    >
+      {({ isActive }) =>
+        variant === 'bottom' ? (
+          <>
+            {item.alert ? <span className="student-bottom-alert" /> : null}
+            <span className="student-bottom-icon-wrap">
+              <MaterialIcon filled={isActive}>{item.icon}</MaterialIcon>
+            </span>
+            <small>{item.label}</small>
+          </>
+        ) : (
+          <>
+            <MaterialIcon filled={isActive}>{item.icon}</MaterialIcon>
+            {item.label}
+          </>
+        )
+      }
+    </NavLink>
   );
 }
 
@@ -59,14 +111,7 @@ export function StudentCourseNavigation() {
 
         <nav className="student-side-nav" aria-label="Navegação do aluno">
           {navItems.map((item) => (
-            <Link
-              key={item.label}
-              to={item.to}
-              className={item.active ? 'student-side-link student-side-link-active' : 'student-side-link'}
-            >
-              <MaterialIcon filled={item.active}>{item.icon}</MaterialIcon>
-              {item.label}
-            </Link>
+            <StudentNavigationItem key={item.label} item={item} variant="side" />
           ))}
         </nav>
 
@@ -82,17 +127,7 @@ export function StudentCourseNavigation() {
         {navItems
           .filter((item) => !item.desktopOnly)
           .map((item) => (
-            <Link
-              key={item.label}
-              to={item.to}
-              className={item.active ? 'student-bottom-link student-bottom-link-active' : 'student-bottom-link'}
-            >
-              {item.alert ? <span className="student-bottom-alert" /> : null}
-              <span className="student-bottom-icon-wrap">
-                <MaterialIcon filled={item.active}>{item.icon}</MaterialIcon>
-              </span>
-              <small>{item.label}</small>
-            </Link>
+            <StudentNavigationItem key={item.label} item={item} variant="bottom" />
           ))}
       </nav>
     </>

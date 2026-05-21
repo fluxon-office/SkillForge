@@ -7,7 +7,7 @@ const courseCoverUrl =
 const navItems = [
   { icon: 'home', label: 'Início', to: '/aluno', active: true },
   { icon: 'school', label: 'Cursos', to: '/aluno/cursos' },
-  { icon: 'leaderboard', label: 'Classificação', to: '#ranking', alert: true },
+  { icon: 'leaderboard', label: 'Classificação', to: '/aluno/classificacao', alert: true },
   { icon: 'card_membership', label: 'Certificados', to: '/aluno/certificados', desktopOnly: true },
   { icon: 'person', label: 'Perfil', to: '#profile' },
   { icon: 'settings', label: 'Configurações', to: '#settings', desktopOnly: true },

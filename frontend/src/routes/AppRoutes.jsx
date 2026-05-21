@@ -8,6 +8,7 @@ import { CertificatesPage } from '../pages/student/CertificatesPage.jsx';
 import { CourseCatalogPage } from '../pages/student/CourseCatalogPage.jsx';
 import { CourseDetailPage } from '../pages/student/CourseDetailPage.jsx';
 import { CoursePlayerPage } from '../pages/student/CoursePlayerPage.jsx';
+import { RankingPage } from '../pages/student/RankingPage.jsx';
 import { StudentDashboardPage } from '../pages/student/StudentDashboardPage.jsx';
 
 export function AppRoutes() {
@@ -20,6 +21,7 @@ export function AppRoutes() {
       <Route path="/aluno/cursos" element={<CourseCatalogPage />} />
       <Route path="/aluno/cursos/:courseId" element={<CourseDetailPage />} />
       <Route path="/aluno/cursos/:courseId/aula" element={<CoursePlayerPage />} />
+      <Route path="/aluno/classificacao" element={<RankingPage />} />
 
       <Route path="/aluno/certificados" element={<StudentLayout />}>
         <Route index element={<CertificatesPage />} />
